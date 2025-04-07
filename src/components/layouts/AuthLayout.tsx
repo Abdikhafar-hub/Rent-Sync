@@ -1,4 +1,3 @@
-
 import React, { ReactNode } from 'react';
 import Logo from '../Logo';
 import { Building } from 'lucide-react';
@@ -17,7 +16,15 @@ const AuthLayout: React.FC<AuthLayoutProps> = ({
   return (
     <div className="min-h-screen flex flex-col sm:flex-row">
       {/* Left side - Branding */}
-      <div className="hidden sm:flex sm:w-1/2 bg-rentalsync-primary p-8 flex-col justify-center items-center text-white">
+      <div
+        className="hidden sm:flex sm:w-1/2 bg-cover bg-center p-8 flex-col justify-center items-center text-white"
+        style={{
+          backgroundImage:
+            "url('https://res.cloudinary.com/ddkkfumkl/image/upload/v1744066268/radius-koreatown-apartments-exterior_wovfre.webp')",
+          backgroundColor: 'rgba(0,0,0,0.6)',
+          backgroundBlendMode: 'overlay',
+        }}
+      >
         <div className="max-w-md mx-auto text-center">
           <div className="mb-6 flex justify-center">
             <Building size={60} className="text-white" />

@@ -77,87 +77,127 @@ const Index = () => {
       </section>
 
       <section className="py-16 bg-gray-50">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Everything You Need in One Platform</h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-              <div className="bg-blue-50 p-3 rounded-full inline-flex mb-4">
-                <CreditCard className="text-rentalsync-primary" size={24} />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Easy M-Pesa Payments</h3>
-              <p className="text-gray-600">
-                Pay rent and bills directly through the platform using M-Pesa's secure payment system.
-              </p>
-              <ul className="mt-4 space-y-2">
-                <li className="flex items-start">
-                  <Check size={16} className="text-green-500 mr-2 mt-1" />
-                  <span className="text-gray-600">Instant payment confirmation</span>
-                </li>
-                <li className="flex items-start">
-                  <Check size={16} className="text-green-500 mr-2 mt-1" />
-                  <span className="text-gray-600">Downloadable payment receipts</span>
-                </li>
-              </ul>
-            </div>
+  <div className="container mx-auto px-4">
+    <h2 className="text-3xl font-bold text-center mb-4">Everything You Need in One Platform</h2>
+    <p className="text-center text-gray-500 max-w-2xl mx-auto mb-12">
+      Designed to simplify your rental workflow with powerful features tailored for tenants and property managers.
+    </p>
 
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-              <div className="bg-blue-50 p-3 rounded-full inline-flex mb-4">
-                <Building className="text-rentalsync-primary" size={24} />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Property Management</h3>
-              <p className="text-gray-600">
-                Comprehensive tools for property managers to oversee multiple properties and units efficiently.
-              </p>
-              <ul className="mt-4 space-y-2">
-                <li className="flex items-start">
-                  <Check size={16} className="text-green-500 mr-2 mt-1" />
-                  <span className="text-gray-600">Track occupancy and tenant details</span>
-                </li>
-                <li className="flex items-start">
-                  <Check size={16} className="text-green-500 mr-2 mt-1" />
-                  <span className="text-gray-600">Financial reporting and analytics</span>
-                </li>
-              </ul>
-            </div>
-
-            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
-              <div className="bg-blue-50 p-3 rounded-full inline-flex mb-4">
-                <Wrench className="text-rentalsync-primary" size={24} />
-              </div>
-              <h3 className="text-xl font-semibold mb-3">Maintenance Management</h3>
-              <p className="text-gray-600">
-                Submit and track maintenance requests with ease, complete with photo uploads and status updates.
-              </p>
-              <ul className="mt-4 space-y-2">
-                <li className="flex items-start">
-                  <Check size={16} className="text-green-500 mr-2 mt-1" />
-                  <span className="text-gray-600">Real-time status updates</span>
-                </li>
-                <li className="flex items-start">
-                  <Check size={16} className="text-green-500 mr-2 mt-1" />
-                  <span className="text-gray-600">Photo attachment support</span>
-                </li>
-              </ul>
-            </div>
-          </div>
+    <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      {/* 1. Easy M-Pesa Payments */}
+      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+        <div className="bg-blue-50 p-3 rounded-full inline-flex mb-4">
+          <CreditCard className="text-rentalsync-primary" size={24} />
         </div>
-      </section>
+        <h3 className="text-xl font-semibold mb-3">Easy M-Pesa Payments</h3>
+        <p className="text-gray-600">
+          Pay rent and bills directly through the platform using M-Pesa's secure payment system.
+        </p>
+        <ul className="mt-4 space-y-2">
+          <li className="flex items-start">
+            <Check size={16} className="text-green-500 mr-2 mt-1" />
+            <span className="text-gray-600">Instant payment confirmation</span>
+          </li>
+          <li className="flex items-start">
+            <Check size={16} className="text-green-500 mr-2 mt-1" />
+            <span className="text-gray-600">Downloadable payment receipts</span>
+          </li>
+        </ul>
+      </div>
 
-      <section className="py-16 bg-rentalsync-primary text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-6">Ready to streamline your rental experience?</h2>
-          <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Join thousands of property managers and tenants who are already enjoying a simpler rental management process.
-          </p>
-          <Button 
-            size="lg"
-            className="bg-white text-rentalsync-primary hover:bg-gray-100"
-            onClick={() => navigate('/register')}
-          >
-            Get Started Today
-          </Button>
+      {/* 2. Property Management */}
+      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+        <div className="bg-blue-50 p-3 rounded-full inline-flex mb-4">
+          <Building className="text-rentalsync-primary" size={24} />
         </div>
-      </section>
+        <h3 className="text-xl font-semibold mb-3">Property Management</h3>
+        <p className="text-gray-600">
+          Comprehensive tools for property managers to oversee multiple properties and units efficiently.
+        </p>
+        <ul className="mt-4 space-y-2">
+          <li className="flex items-start">
+            <Check size={16} className="text-green-500 mr-2 mt-1" />
+            <span className="text-gray-600">Track occupancy and tenant details</span>
+          </li>
+          <li className="flex items-start">
+            <Check size={16} className="text-green-500 mr-2 mt-1" />
+            <span className="text-gray-600">Financial reporting and analytics</span>
+          </li>
+        </ul>
+      </div>
+
+      {/* 3. Maintenance Management */}
+      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+        <div className="bg-blue-50 p-3 rounded-full inline-flex mb-4">
+          <Wrench className="text-rentalsync-primary" size={24} />
+        </div>
+        <h3 className="text-xl font-semibold mb-3">Maintenance Management</h3>
+        <p className="text-gray-600">
+          Submit and track maintenance requests with ease, complete with photo uploads and status updates.
+        </p>
+        <ul className="mt-4 space-y-2">
+          <li className="flex items-start">
+            <Check size={16} className="text-green-500 mr-2 mt-1" />
+            <span className="text-gray-600">Real-time status updates</span>
+          </li>
+          <li className="flex items-start">
+            <Check size={16} className="text-green-500 mr-2 mt-1" />
+            <span className="text-gray-600">Photo attachment support</span>
+          </li>
+        </ul>
+      </div>
+
+      {/* 4. Tenant Portal Access */}
+      <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+        <div className="bg-blue-50 p-3 rounded-full inline-flex mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" className="text-rentalsync-primary" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.121 17.804A7.5 7.5 0 0112 15.5a7.5 7.5 0 016.879 2.304M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+        </div>
+        <h3 className="text-xl font-semibold mb-3">Tenant Portal Access</h3>
+        <p className="text-gray-600">
+          Give tenants an easy-to-use dashboard for rent history, lease info, and communication with property managers.
+        </p>
+        <ul className="mt-4 space-y-2">
+          <li className="flex items-start">
+            <Check size={16} className="text-green-500 mr-2 mt-1" />
+            <span className="text-gray-600">Access payment history and lease details</span>
+          </li>
+          <li className="flex items-start">
+            <Check size={16} className="text-green-500 mr-2 mt-1" />
+            <span className="text-gray-600">In-app messaging with landlords</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section
+  className="py-16 text-white bg-cover bg-center relative"
+  style={{
+    backgroundImage:
+      "url('https://res.cloudinary.com/ddkkfumkl/image/upload/v1744066656/_PropertyManagement_anyaberkut-81d439d832e745229cad8de3835a5869_vmuav8.jpg')",
+  }}
+>
+  <div className="absolute inset-0 bg-black/60 z-0"></div>
+
+  <div className="container mx-auto px-4 text-center relative z-10">
+    <h2 className="text-3xl font-bold mb-6">Ready to streamline your rental experience?</h2>
+    <p className="text-xl mb-8 max-w-2xl mx-auto">
+      Join thousands of property managers and tenants who are already enjoying a simpler rental management process.
+    </p>
+    <Button 
+      size="lg"
+      className="bg-white text-rentalsync-primary hover:bg-gray-100"
+      onClick={() => navigate('/register')}
+    >
+      Get Started Today
+    </Button>
+  </div>
+</section>
+
 
       <footer className="bg-gray-100 py-12">
         <div className="container mx-auto px-4">
