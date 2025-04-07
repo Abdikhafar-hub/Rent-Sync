@@ -1,5 +1,5 @@
-
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Building } from 'lucide-react';
 
 interface LogoProps {
@@ -26,19 +26,24 @@ const Logo: React.FC<LogoProps> = ({
   };
 
   return (
-    <div className={`flex items-center gap-2 ${className}`}>
-      <Building 
-        size={iconSizes[size]} 
-        className="text-rentalsync-primary"
-        strokeWidth={2.5}
-      />
-      {showText && (
-        <span className={`font-bold ${sizeClasses[size]}`}>
-          <span className="text-rentalsync-primary">Rental</span>
-          <span className="text-black">Sync</span>
-        </span>
-      )}
-    </div>
+    <Link to="/" className={`flex flex-col ${className}`}>
+      <div className="flex items-center gap-2">
+        <Building 
+          size={iconSizes[size]} 
+          className="text-rentalsync-primary"
+          strokeWidth={2.5}
+        />
+        {showText && (
+          <span className={`font-bold ${sizeClasses[size]}`}>
+            <span className="text-rentalsync-primary">Rental</span>
+            <span className="text-black">Sync</span>
+          </span>
+        )}
+      </div>
+      <p className="text-xs text-gray-500 mt-1 ml-7 sm:ml-8">
+        Powered by A.khafar Solutions
+      </p>
+    </Link>
   );
 };
 

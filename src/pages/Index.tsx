@@ -21,19 +21,23 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-white">
-      <header className="border-b border-gray-100">
-        <div className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <Logo size="medium" />
-          <div className="flex items-center gap-4">
-            <Button variant="ghost" onClick={() => navigate('/login')}>
-              Log In
-            </Button>
-            <Button onClick={() => navigate('/register')}>
-              Get Started
-            </Button>
-          </div>
-        </div>
-      </header>
+     <header className="border-b border-gray-100">
+  <div className="container mx-auto px-4 py-4 flex items-center justify-between">
+    <div>
+      <Logo size="medium" />
+      
+    </div>
+    <div className="flex items-center gap-4">
+      <Button variant="ghost" onClick={() => navigate('/login')}>
+        Log In
+      </Button>
+      <Button onClick={() => navigate('/register')}>
+        Get Started
+      </Button>
+    </div>
+  </div>
+</header>
+
 
       <section
         className="text-white py-20 bg-cover bg-center"

@@ -142,6 +142,10 @@ const Login = () => {
           Sign up now
         </Link>
       </div>
+
+      <div className="mt-6 text-center text-xs text-gray-500">
+        Made with <span role="img" aria-label="love">❤️</span> by Abdikhafar
+      </div>
     </AuthLayout>
   );
 };

@@ -1,15 +1,11 @@
-
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import AuthLayout from '@/components/layouts/AuthLayout';
-import { useAuth } from '@/contexts/AuthContext';
 import { toast } from 'sonner';
-import { ROUTES, USER_ROLES } from '@/lib/constants';
-import { UserRole } from '@/lib/types';
+import { ROUTES } from '@/lib/constants';
 
 const Register = () => {
   const [email, setEmail] = useState('');
@@ -18,153 +14,91 @@ const Register = () => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
-  const [role, setRole] = useState<UserRole>('tenant');
   const [isSubmitting, setIsSubmitting] = useState(false);
-  
-  const { register } = useAuth();
   const navigate = useNavigate();
 
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Basic validation
+
     if (!email || !password || !confirmPassword || !firstName || !lastName || !phoneNumber) {
       toast.error('Please fill in all fields');
       return;
     }
-    
+
     if (password !== confirmPassword) {
       toast.error('Passwords do not match');
       return;
     }
-    
+
     if (password.length < 6) {
       toast.error('Password must be at least 6 characters long');
       return;
     }
-    
+
     setIsSubmitting(true);
-    
+
     try {
-      await register(email, password, role, firstName, lastName, phoneNumber);
-      toast.success('Registration successful!');
-      
-      // Navigate based on user role
-      if (role === USER_ROLES.ADMIN) {
-        navigate(ROUTES.ADMIN.DASHBOARD);
-      } else {
-        navigate(ROUTES.TENANT.DASHBOARD);
+      const res = await fetch('/api/auth/register-admin', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password, firstName, lastName, phoneNumber }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok) {
+        toast.error(data.error || 'Registration failed');
+        return;
       }
-    } catch (error) {
-      // Error is already handled in the AuthContext
+
+      toast.success('Admin registered successfully!');
+      navigate(ROUTES.ADMIN.DASHBOARD);
+    } catch (err) {
+      toast.error('Something went wrong');
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <AuthLayout
-      title="Create an account"
-      subtitle="Sign up to get started with RentalSync"
-    >
+    <AuthLayout title="Create Admin Account" subtitle="Only Property Managers can self-register">
       <form onSubmit={handleRegister} className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
           <div className="space-y-2">
             <Label htmlFor="firstName">First Name</Label>
-            <Input
-              id="firstName"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
-              placeholder="John"
-              required
-            />
+            <Input id="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} placeholder="John" required />
           </div>
           <div className="space-y-2">
             <Label htmlFor="lastName">Last Name</Label>
-            <Input
-              id="lastName"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
-              placeholder="Doe"
-              required
-            />
+            <Input id="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} placeholder="Doe" required />
           </div>
         </div>
-        
+
         <div className="space-y-2">
           <Label htmlFor="email">Email</Label>
-          <Input
-            id="email"
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="name@example.com"
-            required
-            autoComplete="email"
-          />
+          <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         </div>
-        
+
         <div className="space-y-2">
-          <Label htmlFor="phoneNumber">Phone Number (for M-Pesa)</Label>
-          <Input
-            id="phoneNumber"
-            value={phoneNumber}
-            onChange={(e) => setPhoneNumber(e.target.value)}
-            placeholder="+254712345678"
-            required
-          />
-          <p className="text-xs text-gray-500">Include country code (e.g., +254 for Kenya)</p>
+          <Label htmlFor="phoneNumber">Phone Number</Label>
+          <Input id="phoneNumber" value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} placeholder="+254712345678" required />
         </div>
-        
+
         <div className="space-y-2">
           <Label htmlFor="password">Password</Label>
-          <Input
-            id="password"
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="••••••••"
-            required
-            autoComplete="new-password"
-          />
+          <Input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         </div>
-        
+
         <div className="space-y-2">
           <Label htmlFor="confirmPassword">Confirm Password</Label>
-          <Input
-            id="confirmPassword"
-            type="password"
-            value={confirmPassword}
-            onChange={(e) => setConfirmPassword(e.target.value)}
-            placeholder="••••••••"
-            required
-            autoComplete="new-password"
-          />
+          <Input id="confirmPassword" type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
         </div>
-        
-        <div className="space-y-2">
-          <Label>I am a:</Label>
-          <RadioGroup
-            value={role}
-            onValueChange={(value) => setRole(value as UserRole)}
-            className="flex gap-4"
-          >
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="tenant" id="tenant" />
-              <Label htmlFor="tenant" className="cursor-pointer">Tenant</Label>
-            </div>
-            <div className="flex items-center space-x-2">
-              <RadioGroupItem value="admin" id="admin" />
-              <Label htmlFor="admin" className="cursor-pointer">Property Manager</Label>
-            </div>
-          </RadioGroup>
-        </div>
-        
+
         <Button type="submit" className="w-full" disabled={isSubmitting}>
-          {isSubmitting ? 'Creating account...' : 'Create account'}
+          {isSubmitting ? 'Creating account...' : 'Create Admin Account'}
         </Button>
       </form>
-      
+
       <div className="mt-6 text-center text-sm">
         Already have an account?{' '}
         <Link to="/login" className="text-rentalsync-primary hover:underline font-medium">
