@@ -39,42 +39,43 @@ const Index = () => {
 </header>
 
 
-      <section
-        className="text-white py-20 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://res.cloudinary.com/ddkkfumkl/image/upload/v1744050322/freepik__the-style-is-candid-image-photography-with-natural__75172_qrhbtr.png')",
-        }}
-      >
-        <div className="bg-black/60 py-20">
-          <div className="container mx-auto px-4">
-            <div className="max-w-2xl">
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Simplify Your Rental Management
-              </h1>
-              <p className="text-xl mb-8">
-                RentalSync streamlines property management for both tenants and property managers. Pay rent, submit maintenance requests, and manage your properties with ease.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Button 
-                  size="lg" 
-                  className="bg-white text-rentalsync-primary hover:bg-gray-100"
-                  onClick={() => navigate('/register')}
-                >
-                  Get Started
-                </Button>
-                <Button 
-                  size="lg"
-                  className="bg-white text-rentalsync-primary hover:bg-gray-100"
-                  onClick={() => navigate('/about')}
-                >
-                  Learn More
-                </Button>
-              </div>
-            </div>
-          </div>
+<section
+  className="text-white py-20 bg-cover bg-center"
+  style={{
+    backgroundImage:
+      "url('https://res.cloudinary.com/ddkkfumkl/image/upload/v1744050322/freepik__the-style-is-candid-image-photography-with-natural__75172_qrhbtr.png')",
+  }}
+>
+  <div className="bg-black/60 py-20">
+    <div className="container mx-auto px-4">
+      <div className="max-w-2xl">
+        <h1 className="text-2xl md:text-5xl font-bold mb-6">
+          Simplify Your Rental Management
+        </h1>
+        <p className="text-sm md:text-xl mb-8">
+          RentalSync streamlines property management for both tenants and property managers. Pay rent, submit maintenance requests, and manage your properties with ease.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4">
+          <Button 
+            size="lg" 
+            className="bg-white text-rentalsync-primary hover:bg-gray-100"
+            onClick={() => navigate('/register')}
+          >
+            Get Started
+          </Button>
+          <Button 
+            size="lg"
+            className="bg-white text-rentalsync-primary hover:bg-gray-100"
+            onClick={() => navigate('/about')}
+          >
+            Learn More
+          </Button>
         </div>
-      </section>
+      </div>
+    </div>
+  </div>
+</section>
+
 
       <section className="py-16 bg-gray-50">
   <div className="container mx-auto px-4">
