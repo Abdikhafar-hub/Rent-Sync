@@ -41,14 +41,14 @@ export const mockProperties: Property[] = [
     id: '1',
     adminId: '1',
     name: 'Barre Homes',
-    address: 'Ole Shapara Avenue, Nairobi',
+    address: 'Ole Shapara Avenue, South C Nairobi',
     createdAt: '2023-01-01T00:00:00Z',
   },
   {
     id: '2',
     adminId: '1',
     name: 'Hyatt Residence',
-    address: 'Lower Kabete, Mombasa',
+    address: 'Lower Kabete, Nairobi',
     createdAt: '2023-01-02T00:00:00Z',
   },
 ];
